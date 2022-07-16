@@ -1,97 +1,86 @@
-#!/bin/bash
+# Exercícios
 
-delay=2
+## Parte I - Criação de arquivos e diretórios
 
-# Exercicio 1
+**Dica :** Para criação de arquivos vazios você pode utilizar o comando `touch nome-do-arquivo.extensao`.
 
-echo -e "\nAbrindo diretorio unix_tests"
-cd unix_tests
-echo -e "\nBaixando arquivo countries.txt"
-curl -s -o countries.txt "https://gist.githubusercontent.com/kalinchernev/486393efcca01623b18d/raw/daa24c9fea66afb7d68f8d69f0c4b8eeb9406e83/countries"
-sleep $delay
+1. Utilizando o terminal, aplique o comando de criação de diretórios que você aprendeu: crie um diretório chamado `unix_tests` e navegue até ele.
 
-# Exercicio 2
+2. Crie um arquivo de texto com o nome `trybe.txt`.
 
-echo -e "\nMostrando o conteudo do arquivo countries.txt"
-sleep $delay
-cat countries.txt
-sleep $delay
+3. Crie uma cópia do arquivo `trybe.txt` com nome `trybe_backup.txt`.
 
-# Exercicio 3
+4. Renomeie o arquivo `trybe.txt`.
 
-echo -e "\nMostrando o conteudo do arquivo countries.txt, use /Zambia para fazer a pesquisa, aperte n para a proxima ocorrencia e p para a anterior"
-sleep $delay
-less countries.txt
+5. Dentro de `unix_tests` , crie um novo diretório chamado `backup`.
 
-# Exercicio 4
-# Utilizar teclas n para proximo(next) e p para anterior(previous) para navegar
+6. Mova o arquivo `trybe_backup.txt` para o diretório `backup`.
 
-# Exercicio 5
-echo -e "\nBuscando Brazil no arquivo countries.txt"
-grep "Brazil" countries.txt || echo "Não encontrado"
-sleep $delay
+7. Dentro de `unix_tests` , crie um novo diretório chamado `backup2`.
 
-# Exercicio 6
+8. Mova o arquivo `trybe_backup.txt` da pasta `backup` para a pasta `backup2`.
 
-echo -e "\nBuscando brazil (lowercase) no arquivo countries.txt"
-grep "brazil" countries.txt || echo "Não encontrado"
-sleep $delay
+9. Apague a pasta `backup`.
 
+10. Renomeie a pasta `backup2` para `backup`.
 
-# Criando arquivo que sera usado para os proximos exercicios
+11. Veja qual o path completo do diretório atual e liste todos os arquivos dentro dele.
 
-echo -e "\nCriando arquivo phrases.txt com frases do Chuck Norris"
-for ((i = 0; i < 10; i++))
-do
-  joke=$(jq .value <(curl -s https://api.chucknorris.io/jokes/random))
-  echo $joke
-  echo $joke >> phrases.txt
-done
+12. Apague o diretório `backup`.
 
-# Exercicio 7
+13. Limpe o terminal.
 
-echo -e "\nBuscando frases que nao contenham a palavra fox"
-grep -v "fox" phrases.txt
-sleep $delay
+**Para os exercícios, 14 e 15, crie, de forma manual na parte gráfica do seu sistema operacional, um arquivo de texto com o conteúdo abaixo, chamado `skills.txt`:**
 
-# Exercício 8
+```
+Internet
+Unix
+Bash
+HTML
+CSS
+JavaScript
+React
+SQL
+```
 
-echo -e "\nContando o numero de palavras do arquivo phrases"
-echo -e "Total de palavras: $(cat phrases.txt | wc -w)"
-sleep $delay
+14. Mostre na tela as 5 primeiras skills do arquivo `skills.txt`.
 
-# Exercício 9
+15. Mostre na tela as 4 últimas skills do arquivo `skills.txt`.
 
-echo -e "\nContando o numero de linhas do arquivo phrases"
-echo -e "Total de linhas: $(cat phrases.txt | wc -l)"
-sleep $delay
+16. Apague todos os arquivos que terminem em `.txt`.
 
-# Exercício 10
+## Parte II - Manipulação & Busca
 
-echo -e "\nCriando os arquivos empty.tbt e empty.pdf"
-touch empty.tbt empty.pdf
-sleep $delay
+1. Na pasta `unix_tests`, baixe um arquivo com os nomes de todos os países do mundo utilizando o comando curl:
 
-# Exercício 11
+```
+curl -o countries.txt "https://gist.githubusercontent.com/kalinchernev/486393efcca01623b18d/raw/daa24c9fea66afb7d68f8d69f0c4b8eeb9406e83/countries"
+```
 
-echo -e "\nListando todos os arquivos do diretorio unix_tests"
-ls -a
-sleep $delay
+2. Mostre todo o conteúdo do arquivo `countries.txt` na tela.
 
-# Exercício 12
+3. Mostre o conteúdo de `countries.txt`, página por página, até encontra a `Zambia`.
 
-echo -e "\nListando todos os arquivos do diretorio unix_tests que terminem com txt"
-ls -a *.txt
-sleep $delay
+4. Mostre novamente o conteúdo de `countries.txt` página por página, mas agora utilize um comando para buscar por `Zambia`.
 
-# Exercício 13
+5. Busque por `Brazil` no `countries.txt`.
 
-echo -e "\nListando todos os arquivos do diretorio unix_tests que terminem com tbt ou txt"
-ls -a *.{tbt,txt}
-sleep $delay
+6. Busque novamente por `brazil` , mas agora utilizando o lower case.
 
-# Exercício 14
+**Para os próximos exercícios, crie um novo arquivo chamado `phrases.txt` e adicione algumas frases a sua escolha. Não precisa criar o arquivo pelo terminal.**
 
-echo -e "\nAcessando manual do comando ls"
-man ls
-sleep $delay
+7. Busque pelas frases que não contenham a palavra `fox`.
+
+8. Conte o número de palavras do arquivo `phrases.txt`.
+
+9. Conte o número de linhas do arquivo `phrases.txt`.
+
+10. Crie os arquivos `empty.tbt` e `empty.pdf`.
+
+11. Liste todos os arquivos do diretório `unix_tests`.
+
+12. Liste todos os arquivos que terminem com `txt`.
+
+13. Liste todos os arquivos que terminem com `tbt` ou `txt`.
+
+14. Acesse o manual do comando `ls`.
